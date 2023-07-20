@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Webhook Tutorial</title>
+</head>
+<body>
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    function sendMessage() {
+      const webhookUrl = "YOUR_WEBHOOK_URL";
+      const messageContent = "The message to send";
+
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          content: messageContent
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Message sent successfully!');
+        } else {
+          console.error('Failed to send message.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+</body>
+</html>
